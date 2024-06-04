@@ -12,7 +12,7 @@ import umc.spring.study.domain.Terms;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 
-public class MemberAgree extends BaseEntity {
+public class UserAgree extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

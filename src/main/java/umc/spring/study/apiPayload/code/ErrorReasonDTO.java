@@ -15,4 +15,5 @@ public class ErrorReasonDTO {
     private String code;
     private boolean isSuccess;
     private HttpStatus httpStatus;
+//
 }

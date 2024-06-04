@@ -13,16 +13,19 @@ public enum ErrorStatus implements BaseErrorCode {
     _BAD_REQUEST(HttpStatus.BAD_REQUEST,"COMMON400","잘못된 요청입니다."),
     _UNAUTHORIZED(HttpStatus.UNAUTHORIZED,"COMMON401","인증이 필요합니다."),
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
-
-    _TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "THIS IS TEST!"),;
-    // 멤버 관련 응답
-
+    //temp 관련 응답
+    _TEMP_EXCEPTION(HttpStatus.BAD_REQUEST, "TEMP4001", "THIS IS TEST!"),
+    // 음식카테고리 관련 응답
+    _FOOD_NOT_FOUND(HttpStatus.BAD_REQUEST,"COMMON400","잘못된 요청입니다."),;
     // ~~~ 관련 응답 ....
 
 
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
+
+
+//    두개가 필요한 이유가 뭘까?
 
     @Override
     public ErrorReasonDTO getReason() {

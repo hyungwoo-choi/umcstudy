@@ -12,9 +12,11 @@ import umc.spring.study.web.dto.TempResponse;
 
 @RestController
 @RequestMapping("/temp")
-@RequiredArgsConstructor
+@RequiredArgsConstructor // 생성자주입
 public class TempRestController {
     private final TempQueryService tempQueryService;
+//    위 어노테이션 생성자 주입을 통해서 tempQueryService를 선언해줌으로 tempQueryServiceImpl의
+//    메서드가 실행된다.
 
     @GetMapping("/test")
     public ApiResponse<TempResponse.TempTestDTO> testAPI(){

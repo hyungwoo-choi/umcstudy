@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import umc.spring.study.domain.common.BaseEntity;
-import umc.spring.study.domain.mapping.MemberPrefer;
+import umc.spring.study.domain.mapping.UserPrefer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class Food extends BaseEntity {
     private String name;
 
     @OneToMany(mappedBy = "foodCategory", cascade = CascadeType.ALL)
-    private List<MemberPrefer> meberPreferList = new ArrayList<>();
+    private List<UserPrefer> userPreferList = new ArrayList<>();
 
     public void setId(Long id) {
         this.id = id;
