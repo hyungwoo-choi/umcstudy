@@ -13,6 +13,7 @@ import umc.spring.study.repository.ReviewRepository;
 import umc.spring.study.web.dto.UsersRequestDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -31,8 +32,13 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
         Review newReview = ReviewConverter.toReview(request);
 //
 ////        가게가 있는지 없는지 찾음
-//        Long marketId = marketRepository.findIdByMarket(request.getMarket())
+//        Long marketId = marketRepository.findMarketIdByMarket(request.getMarket())
 //                .orElseThrow(() -> new MarketHandler(ErrorStatus._MARKET_NOT_FOUND));
+
+        // 가게가 있는지 없는지 찾음
+        Optional<Long> marketIdOptional = marketRepository.findMarketIdByMarket(request.getMarket());
+        Long marketId = marketIdOptional.orElseThrow(() -> new MarketHandler(ErrorStatus._MARKET_NOT_FOUND));
+
 
         return reviewRepository.save(newReview);
     }
