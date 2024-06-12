@@ -15,8 +15,8 @@ public class ReviewConverter {
         return Review.builder()
                 .body(request.getBody())
                 .score(request.getScore())
-                .market(request.getMarketId())
-                .user(request.getUserId())
+                .market(request.getMarket())
+                .user(request.getUser())
                 .build();
     }
 }

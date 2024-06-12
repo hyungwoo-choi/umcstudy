@@ -29,10 +29,10 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
 //    addReview 메서드 완성시켜야됨, 어노테이션 완성
     public Review addReview(UsersRequestDTO.AddReviewDTO request){
         Review newReview = ReviewConverter.toReview(request);
-
-//        가게가 있는지 없는지 찾음
-        Long marketId = marketRepository.findIdByMarket(request.getMarket())
-                .orElseThrow(() -> new MarketHandler(ErrorStatus._MARKET_NOT_FOUND));
+//
+////        가게가 있는지 없는지 찾음
+//        Long marketId = marketRepository.findIdByMarket(request.getMarket())
+//                .orElseThrow(() -> new MarketHandler(ErrorStatus._MARKET_NOT_FOUND));
 
         return reviewRepository.save(newReview);
     }
