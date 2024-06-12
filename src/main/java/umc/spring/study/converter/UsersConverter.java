@@ -16,9 +16,10 @@ public class UsersConverter {
                 .createdAt(LocalDateTime.now())
                 .build();
     }
+
+
     public static Users toUser(UsersRequestDTO.JoinDto request){
         Gender gender = null;
-
         switch (request.getGender()){
             case 1:
                 gender = Gender.MALE;

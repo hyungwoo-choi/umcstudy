@@ -17,4 +17,11 @@ public class UsersResponseDTO {
         Long userId;
         LocalDateTime createdAt;
     }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class AddReviewResultDTO{
+        Long reviewId;
+    }
 }

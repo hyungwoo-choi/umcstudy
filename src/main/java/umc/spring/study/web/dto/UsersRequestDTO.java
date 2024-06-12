@@ -4,7 +4,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
+import umc.spring.study.domain.Market;
+import umc.spring.study.domain.Users;
 import umc.spring.study.validation.annotation.ExistCategories;
+import umc.spring.study.validation.annotation.ExistMarket;
 
 import java.util.List;
 
@@ -28,5 +31,18 @@ public class UsersRequestDTO {
         String specAddress;
         @ExistCategories
         List<Long> preferCategory;
+    }
+    @Getter
+    public static class AddReviewDTO{
+        @NotNull
+        String body;
+        @NotNull
+        float score;
+        @NotNull
+        Users userId;
+//        마켓인증확인해야됨 valid
+        @NotNull
+        @ExistMarket
+        Market marketId;
     }
 }

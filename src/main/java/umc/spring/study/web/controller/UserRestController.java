@@ -20,6 +20,8 @@ public class UserRestController {
 
     private final UsersCommandService userCommandService;
 //파라미터로 유저에 관한 값을 넘겨주면 응답을 해주는 컨트롤러임
+
+//    /Users 라는 url 요청이있을때 joinAPI 로 들어가짐
     @PostMapping("/")
     public ApiResponse<UsersResponseDTO.JoinResultDTO> joinAPI(@RequestParam @Valid UsersRequestDTO.JoinDto request){
         Users user = userCommandService.joinUser(request);
