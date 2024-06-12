@@ -39,10 +39,10 @@ public class UsersRequestDTO {
         @NotNull
         float score;
         @NotNull
-        Users userId;
+        Users user;
 //        마켓인증확인해야됨 valid
         @NotNull
         @ExistMarket
-        Market marketId;
+        Market market;
     }
 }

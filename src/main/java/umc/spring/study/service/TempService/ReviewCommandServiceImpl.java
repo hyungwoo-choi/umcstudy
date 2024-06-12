@@ -31,7 +31,7 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
         Review newReview = ReviewConverter.toReview(request);
 
 //        가게가 있는지 없는지 찾음
-        Market market = marketRepository.findById(request.getMarketId())
+        Long marketId = marketRepository.findIdByMarket(request.getMarket())
                 .orElseThrow(() -> new MarketHandler(ErrorStatus._MARKET_NOT_FOUND));
 
         return reviewRepository.save(newReview);
