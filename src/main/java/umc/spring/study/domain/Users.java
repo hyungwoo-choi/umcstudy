@@ -2,12 +2,15 @@ package umc.spring.study.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.Id;
 import umc.spring.study.domain.common.BaseEntity;
 import umc.spring.study.domain.enums.*;
-import umc.spring.study.domain.mapping.MemberAgree;
-import umc.spring.study.domain.mapping.MemberMission;
-import umc.spring.study.domain.mapping.MemberPrefer;
+import umc.spring.study.domain.mapping.UserAgree;
+import umc.spring.study.domain.mapping.UserMission;
+import umc.spring.study.domain.mapping.UserPrefer;
 import umc.spring.study.domain.mapping.Review;
 
 import java.time.LocalDate;
@@ -16,6 +19,8 @@ import java.util.List;
 
 @Entity
 @Getter
+@DynamicInsert
+@DynamicUpdate
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -44,26 +49,27 @@ public class Users extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "VARCHAR(15) DEFAULT 'ACTIVE'")
-    private MemberStatus status;
+    private UserStatus status;
 
     private LocalDate inactivaDate;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = true, length = 50)
     private String email;
 
+    @ColumnDefault("0")
     private Integer point;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<MemberPrefer> meberPreferList = new ArrayList<>();
+    private List<UserPrefer> userPreferList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<MemberMission> meberMissionList = new ArrayList<>();
+    private List<UserMission> userMissionList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<MemberAgree> memberAgreeList = new ArrayList<>();
+    private List<UserAgree> userAgreeList = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Inquiry> InquiryList = new ArrayList<>();
@@ -75,4 +81,5 @@ public class Users extends BaseEntity {
     public Long getId() {
         return id;
     }
+
 }
