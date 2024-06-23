@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class UsersResponseDTO {
@@ -17,11 +18,19 @@ public class UsersResponseDTO {
         Long userId;
         LocalDateTime createdAt;
     }
+//    리뷰 결과
     @Builder
     @Getter
     @NoArgsConstructor
     @AllArgsConstructor
     public static class AddReviewResultDTO{
         Long reviewId;
+    }
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class TryMissionReseltDTO{
+        Long userMissionId;
     }
 }

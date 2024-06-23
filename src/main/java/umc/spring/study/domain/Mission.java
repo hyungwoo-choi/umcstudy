@@ -20,11 +20,11 @@ public class Mission extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer reward;
+    private float reward;
+
+    private String body;
 
     private LocalDate deadline;
-
-    private String missionSpec;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "market_id")

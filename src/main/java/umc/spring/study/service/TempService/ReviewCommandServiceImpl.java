@@ -39,7 +39,6 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
         Optional<Long> marketIdOptional = marketRepository.findMarketIdByMarket(request.getMarket());
         Long marketId = marketIdOptional.orElseThrow(() -> new MarketHandler(ErrorStatus._MARKET_NOT_FOUND));
 
-
         return reviewRepository.save(newReview);
     }
 }

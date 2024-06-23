@@ -26,4 +26,5 @@ public class ReviewRestController {
         Review review = reviewCommandService.addReview(request);
         return ApiResponse.onSuccess(ReviewConverter.toAddReviewResultDTO(review));
     }
+
 }
