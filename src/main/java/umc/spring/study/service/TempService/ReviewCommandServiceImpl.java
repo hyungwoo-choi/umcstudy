@@ -29,6 +29,7 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
 
 //    addReview 메서드 완성시켜야됨, 어노테이션 완성
     public Review addReview(UsersRequestDTO.AddReviewDTO request){
+//        dto -> entity
         Review newReview = ReviewConverter.toReview(request);
 //
 ////        가게가 있는지 없는지 찾음
@@ -40,5 +41,6 @@ public class ReviewCommandServiceImpl implements ReviewCommandService {
         Long marketId = marketIdOptional.orElseThrow(() -> new MarketHandler(ErrorStatus._MARKET_NOT_FOUND));
 
         return reviewRepository.save(newReview);
+//        Review 타입의 newReview 를 반환함
     }
 }
