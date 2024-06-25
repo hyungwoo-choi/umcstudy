@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import umc.spring.study.domain.Market;
+import umc.spring.study.domain.Mission;
 import umc.spring.study.domain.Users;
 import umc.spring.study.validation.annotation.ExistCategories;
 import umc.spring.study.validation.annotation.ExistMarket;
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class UsersRequestDTO {
     @Getter
-//    가입결과 요청에 대한 정보
+//    가입요청에 대한 정보
     public static class JoinDto{
         @NotBlank
         String name;
@@ -45,5 +46,13 @@ public class UsersRequestDTO {
         @ExistMarket
         Market market;
     }
+    @Getter
+    public static class TryMissionDTO{
+        @NotNull
+        Mission mission;
+        @NotNull
+        Users user;
+    }
+
 }
 
