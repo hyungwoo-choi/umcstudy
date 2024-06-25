@@ -1,8 +1,14 @@
 package umc.spring.study.converter;
 
+import org.springframework.data.domain.Page;
 import umc.spring.study.domain.mapping.Review;
+import umc.spring.study.web.dto.MarketRequestDTO;
+import umc.spring.study.web.dto.MarketResponseDTO;
 import umc.spring.study.web.dto.UsersRequestDTO;
 import umc.spring.study.web.dto.UsersResponseDTO;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReviewConverter {
 
@@ -22,6 +28,25 @@ public class ReviewConverter {
                 .score(request.getScore())
                 .market(request.getMarket())
                 .user(request.getUser())
+                .build();
+    }
+    public static MarketResponseDTO.ReviewPreViewDTO reviewPreViewDTO(Review review){
+        return MarketResponseDTO.ReviewPreViewDTO.builder()
+                .ownerNickname(review.getUser().getName())
+                .score(review.getScore())
+                .body(review.getBody())
+                .build();
+    }
+    public static MarketResponseDTO.ReviewPreViewListDTO reviewPreViewListDTO(Page<Review> reviewList){
+        List<MarketResponseDTO.ReviewPreViewDTO> reviewPreViewDTOList = reviewList.stream()
+                .map(ReviewConverter::reviewPreViewDTO).collect(Collectors.toList());
+        return MarketResponseDTO.ReviewPreViewListDTO.builder()
+                .isLast(reviewList.isLast())
+                .isFirst(reviewList.isFirst())
+                .totalPage(reviewList.getTotalPages())
+                .totalElements(reviewList.getTotalElements())
+                .listSize(reviewPreViewDTOList.size())
+                .reviewList(reviewPreViewDTOList)
                 .build();
     }
 }
