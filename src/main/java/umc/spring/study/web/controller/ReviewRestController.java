@@ -9,12 +9,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import umc.spring.study.apiPayload.ApiResponse;
 import umc.spring.study.converter.ReviewConverter;
 import umc.spring.study.domain.mapping.Review;
+import umc.spring.study.service.TempService.MarketQueryService;
+import umc.spring.study.service.TempService.MarketQueryServiceImpl;
 import umc.spring.study.service.TempService.ReviewCommandService;
 import umc.spring.study.validation.annotation.ExistMarket;
+import umc.spring.study.validation.annotation.ExistPage;
 import umc.spring.study.web.dto.MarketResponseDTO;
 import umc.spring.study.web.dto.UsersRequestDTO;
 import umc.spring.study.web.dto.UsersResponseDTO;
@@ -24,6 +28,7 @@ import umc.spring.study.web.dto.UsersResponseDTO;
 @RequestMapping("Review")
 public class ReviewRestController {
     private final ReviewCommandService reviewCommandService;
+    private final MarketQueryService marketQueryService;
 
     @PostMapping("/")
 //    POST 전송을 받게 되면
@@ -53,8 +58,9 @@ public class ReviewRestController {
     @Parameters({
             @Parameter(name = "storeId", description = "가게의 아이디, path variable 입니다!")
     })
-    public ApiResponse<MarketResponseDTO.ReviewPreViewListDTO> getReviewList(@ExistMarket @PathVariable(name = "marketId") Long marketId){
-        return null;
+    public ApiResponse<MarketResponseDTO.ReviewPreViewListDTO> getReviewList(@ExistMarket @PathVariable(name = "marketId") Long marketId,@ExistPage @RequestParam(name = "page") Integer page){
+        Page<Review> reviewList = marketQueryService.getReviewList(marketId, page);
+        return ApiResponse.onSuccess(ReviewConverter.reviewPreViewListDTO(reviewList));
     }
 
 }
