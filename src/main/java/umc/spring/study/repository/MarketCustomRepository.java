@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface MarketCustomRepository {
     Optional<Long> findMarketIdByMarket(Market market);
+//    public Long countReivewsByMarket(Market market);
 }

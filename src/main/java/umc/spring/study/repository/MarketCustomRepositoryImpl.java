@@ -16,4 +16,13 @@ public class MarketCustomRepositoryImpl implements MarketCustomRepository{
                 .getSingleResult();
         return Optional.ofNullable(marketId);
     }
+
+//    public Long countReivewsByMarket(Market market){
+//        String jpql = "select count(review) from Review review where review.market = :market";
+//        Long reviews = entityManager.createQuery(jpql, Long.class)
+//                .setParameter("market", market)
+//                .getSingleResult();
+//        return reviews;
+
+//    }
 }
