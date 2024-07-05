@@ -23,9 +23,9 @@ public class PageExistValidator implements ConstraintValidator<ExistPage, Intege
     }
 
     @Override
-    public boolean isValid(Integer values, ConstraintValidatorContext context) {
+    public boolean isValid(Integer value, ConstraintValidatorContext context) {
         boolean isValid = true;
-        if(values < 0){
+        if(value < 0){
             isValid = false;
         }
 
