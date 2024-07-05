@@ -26,10 +26,12 @@ public class MarketExistValidator implements ConstraintValidator<ExistMarket, Li
                 .allMatch(value -> marketRepository.existsById(value));
 
         if (!isValid) {
+//            기본메세지 출력을 막습니다.
             context.disableDefaultConstraintViolation();
+//            사용자정의메세지에 에러코드의 상태를 출력한다.
             context.buildConstraintViolationWithTemplate(ErrorStatus._MARKET_NOT_FOUND.toString()).addConstraintViolation();
         }
-
+        System.out.println("asdfsdf");
         return isValid;
     }
 }
